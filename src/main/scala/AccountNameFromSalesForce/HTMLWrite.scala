@@ -18,7 +18,7 @@ case object HTMLWrite {
           el => s"<tr><td>${el.replace("\"", " ").mkString}</td></tr>"
         }
         .mkString
-      val preparedOutput = s"<table>$combinedList</table>"
+      val preparedOutput = s"<!DOCTYPE HTML><html><head><title>Case Number, Account Name</title></head><body><table>$combinedList</table></body></html>"
 
       val dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss")
       val now = dateFormat.format(Calendar.getInstance.getTime)

@@ -52,7 +52,6 @@ object SFQuery {
     Try (establishedConnection.createBatchFromStream(createdJob, bout))
     match{
       case Success(info)=>Success(info)
-
       case Failure(ex)=>Failure(ex)
     }
   }
