@@ -37,3 +37,13 @@ java -jar "C:\temp\AccountNameFromSF.jar" "D:\cases.csv" "username@domain.com" "
 
 *[root@localhost]$*
 java -jar home/Downloads/AccountNamefromSalesForce.jar "home/Downloads/cases.csv" "username@domain.com" 'PasswordSecurityToken'
+
+#### How to generate SalesForce security token
+
+1) login to SalesForce
+
+2) in the top right corner click on your name -> My settings
+
+3) click Personal -> Reset My Security Token, or enter 'reset' in quick find
+
+You'll receive an e-mail with a new token.
