@@ -1,15 +1,17 @@
 package AccountNameFromSalesForce
 
-import com.sforce.async._
 import java.io.ByteArrayInputStream
 import java.util.Calendar
+
+import AccountNameFromSalesForce.model._
+import com.sforce.async._
 
 import scala.util.{Failure, Success, Try}
 
 object SFQuery {
   def prepareJob(establishedConnection: BulkConnection): JobInfo = {
     val job = new JobInfo
-    job.setObject("Case")
+    job.setObject("Case")//corresponds to SELECT
     job.setOperation(OperationEnum.query)
     job.setConcurrencyMode(ConcurrencyMode.Parallel)
     job.setContentType(ContentType.CSV)
@@ -32,7 +34,7 @@ object SFQuery {
 
   case class customException(ex: String) extends Exception(ex)
 
-  def queryString(listOfCases: List[String]): String = {
+  def queryString(listOfCases: List[VeeamCase]): String = {
     if ((listOfCases.size > 9999)|| (listOfCases.size < 1))
       throw customException("SalesForce batch inconsistent, please change batch size and check source input data.")
 
@@ -42,7 +44,7 @@ object SFQuery {
     WHERE CaseNumber IN
     (${
       listOfCases
-        .map(number => s"'$number'")
+        .map(elem => s"'${elem.number}'")
         .mkString(",")
     })"""
   }

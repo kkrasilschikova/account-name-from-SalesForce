@@ -2,6 +2,8 @@ package AccountNameFromSalesForce
 
 import java.io.File
 
+import AccountNameFromSalesForce.model._
+
 import scala.annotation.tailrec
 import scala.io.Source
 
@@ -39,7 +41,7 @@ abstract class CSVRead {
     else index
   }
 
-  def getListOfCasesFromFile(filepath: String, column: Int): List[String] = {
+  def getListOfCasesFromFile(filepath: String, column: Int): List[VeeamCase] = {
     val sourcefile = io.Source.fromFile(filepath)
     if (headerExists) {
       sourcefile.getLines().take(1).next
@@ -50,17 +52,15 @@ abstract class CSVRead {
       .toList
 
     @tailrec
-    def checkCaseNumberFormat(in: List[String], acc: List[String]): List[String] = {
+    def checkCaseNumberFormat(in: List[String], acc: List[Option[VeeamCase]]): List[Option[VeeamCase]] = {
       in match {
         case Nil => acc
-        case head :: tail => if (head matches "[0-9]{8}")
-          checkCaseNumberFormat(tail, head :: acc)
-        else checkCaseNumberFormat(tail, acc)
+        case head :: tail => checkCaseNumberFormat(tail, validateCaseFormat(head) :: acc)
       }
     }
 
     sourcefile.close
-    checkCaseNumberFormat(listOfCasesInColumn, List())
+    checkCaseNumberFormat(listOfCasesInColumn, List()).flatten
   }
 }
 

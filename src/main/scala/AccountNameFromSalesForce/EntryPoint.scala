@@ -1,5 +1,6 @@
 package AccountNameFromSalesForce
 
+import AccountNameFromSalesForce.model._
 import com.sforce.async.{BatchInfo, BulkConnection, JobInfo}
 import com.sforce.ws.ConnectorConfig
 
@@ -17,7 +18,7 @@ object EntryPoint{
     CSVwithoutHeader.headerExists
     val header: Option[String] = CSVwithoutHeader.getHeaderFromFile(filepath)
     val column: Int = CSVwithoutHeader.getColumnNumberWithCases(filepath)
-    val listOfCases: List[String] = CSVwithoutHeader.getListOfCasesFromFile(filepath, column)
+    val listOfCases: List[VeeamCase] = CSVwithoutHeader.getListOfCasesFromFile(filepath, column)
 
     //Login to SalesForce: create partner connection and bulk connection
     val partner: ConnectorConfig = SFConnect.getPartnerConnection(userName, passwordSecurityToken)
