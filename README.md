@@ -4,7 +4,7 @@ You may get Account name from SalesForce by providing the program with .csv file
 Please prepare .csv file in advance.  
 Output will be .html file in the folder where you run the program.
 
-#### Example of prepared .csv file
+#### Example of prepared .csv file:
 ```
 id,casenumber,region
 1,12345678,EU
