@@ -63,9 +63,9 @@ object EntryPoint{
       println(s"\nWrong parameters! Please specify\n\n" +
         "- path to .csv file\n" +
         "- username\n" +
-        "- passwordSecurityToken (no spaces)\n\n" +
+        "- passwordSecurityToken (no space)\n\n" +
         "Examples:\n\n" +
-        """[root@localhost]$ java -jar "home/user/Downloads/AccountNameFromSF.jar" "home/user/Downloads/cases.csv" "username@domain.com" 'PasswordSecurityToken' """ +
+        """[root@localhost]$ java -jar /home/user/Downloads/AccountNameFromSF.jar /home/user/Downloads/cases.csv "username@domain.com" 'PasswordSecurityToken' """ +
         "\n\n" +
         """PS C:\Users\Administrator> java -jar "C:\temp\AccountNameFromSF.jar" "D:\cases.csv" "username@domain.com" "PasswordSecurityToken" """ +
         "\n")
