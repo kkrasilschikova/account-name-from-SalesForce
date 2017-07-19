@@ -29,7 +29,7 @@ If not, download it from https://www.java.com/en/download/
 
 2) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to C:\temp
 
-3) open PowerShell and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
+3) open PowerShell and specify path to .csv file, username and passwordSecurityToken (no space), for example,
 
 *PS C:\Users\Administrator>*
 java -jar "C:\temp\AccountNameFromSalesForce.jar" "D:\cases.csv" "username@domain.com" "PasswordSecurityToken"
@@ -46,7 +46,7 @@ If not, download it from https://www.java.com/en/download/
 
 3) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to /home/user/Downloads/
 
-4) open terminal window and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
+4) open terminal window and specify path to .csv file, username and passwordSecurityToken (no space), for example,
 
 *[user@localhost]$*
 java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Downloads/cases.csv "username@domain.com" 'PasswordSecurityToken'
