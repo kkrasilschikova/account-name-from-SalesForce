@@ -17,13 +17,13 @@ libraryDependencies += "com.force.api" % "force-partner-api" % "40.0.0"
 libraryDependencies += "com.force.api" % "force-wsc" % "40.0.0"
 ```
 
-#### In order to run the program on Windows machine
+#### In order to run the program on Windows system
 
 0) prepared cases.csv was put, for example, in D:\
 
-1) check that Java is installed on your computer
+1) check that Java version 1.8.0 is installed
 ```
-PS C:\Users\Administrator> java
+PS C:\Users\Administrator> java -version
 ```
 If not, download it from https://www.java.com/en/download/
 
@@ -38,9 +38,15 @@ java -jar "C:\temp\AccountNameFromSalesForce.jar" "D:\cases.csv" "username@domai
 
 0) prepared cases.csv was put, for example, in /home/user/Downloads/
 
-1) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to /home/user/Downloads/
+1) check that Java version 1.8.0 is installed
+```
+[user@localhost]$ java -version
+```
+If not, download it from https://www.java.com/en/download/
 
-2) open terminal window and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
+3) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to /home/user/Downloads/
+
+4) open terminal window and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
 
 *[user@localhost]$*
 java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Downloads/cases.csv "username@domain.com" 'PasswordSecurityToken'
