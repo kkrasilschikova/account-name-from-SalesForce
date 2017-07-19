@@ -42,7 +42,7 @@ java -jar "C:\temp\AccountNameFromSalesForce.jar" "D:\cases.csv" "username@domai
 
 2) open terminal window and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
 
-*[root@localhost]$*
+*[user@localhost]$*
 java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Downloads/cases.csv "username@domain.com" 'PasswordSecurityToken'
 
 #### How to generate SalesForce security token
