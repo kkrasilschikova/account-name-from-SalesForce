@@ -11,7 +11,7 @@ abstract class CSVRead {
   case class CustomException(ex: String) extends Exception(ex)
 
   def fileExists(filepath: String): Boolean={
-    if (new File(filepath).exists() && new File(filepath).isFile) true
+    if (new File(filepath).exists() & new File(filepath).isFile) true
     else throw CustomException(s"File $filepath doesn't exist.")
   }
 

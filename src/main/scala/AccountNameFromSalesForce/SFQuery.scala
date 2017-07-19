@@ -11,14 +11,14 @@ import scala.util.{Failure, Success, Try}
 object SFQuery {
   def prepareJob(establishedConnection: BulkConnection): JobInfo = {
     val job = new JobInfo
-    job.setObject("Case")//corresponds to SELECT
+    job.setObject("Case") //corresponds to SELECT
     job.setOperation(OperationEnum.query)
     job.setConcurrencyMode(ConcurrencyMode.Parallel)
     job.setContentType(ContentType.CSV)
     job
   }
 
-  def tryJobCreation(establishedConnection: BulkConnection, preparedJob: JobInfo): Try[JobInfo]={
+  def tryJobCreation(establishedConnection: BulkConnection, preparedJob: JobInfo): Try[JobInfo] = {
     Try(establishedConnection.createJob(preparedJob)) match {
       case Success(cJ) => Success(cJ)
       case Failure(ex) => println("Please modify the job settings.")
@@ -35,7 +35,7 @@ object SFQuery {
   case class customException(ex: String) extends Exception(ex)
 
   def queryString(listOfCases: List[VeeamCase]): String = {
-    if ((listOfCases.size > 9999)|| (listOfCases.size < 1))
+    if ((listOfCases.size > 9999) || (listOfCases.size < 1))
       throw customException("SalesForce batch inconsistent, please change batch size and check source input data.")
 
     s"""
@@ -49,20 +49,20 @@ object SFQuery {
     })"""
   }
 
-  def tryBatchCreation(establishedConnection: BulkConnection, createdJob: JobInfo, preparedQuery: String): Try[BatchInfo]={
+  def tryBatchCreation(establishedConnection: BulkConnection, createdJob: JobInfo, preparedQuery: String): Try[BatchInfo] = {
     val bout = new ByteArrayInputStream(preparedQuery.getBytes)
-    Try (establishedConnection.createBatchFromStream(createdJob, bout))
-    match{
-      case Success(info)=>Success(info)
-      case Failure(ex)=>Failure(ex)
+    Try(establishedConnection.createBatchFromStream(createdJob, bout))
+    match {
+      case Success(info) => Success(info)
+      case Failure(ex) => Failure(ex)
     }
   }
 
   def createBatch(establishedConnection: BulkConnection, createdJob: JobInfo, triedBatch: Try[BatchInfo]): Option[BatchInfo] = {
     val createdBatch = establishedConnection.getBatchInfo(createdJob.getId, triedBatch.get.getId)
-    val startTime=Calendar.getInstance.getTime
+    val startTime = Calendar.getInstance.getTime
 
-    def checkBatchState(createdBatch: BatchInfo, diff: Long): Option[BatchInfo]= {
+    def checkBatchState(createdBatch: BatchInfo, diff: Long): Option[BatchInfo] = {
       createdBatch.getState match {
         case BatchStateEnum.Completed =>
           Some(createdBatch)
@@ -72,15 +72,14 @@ object SFQuery {
         case _ =>
           println(s"Waiting for batch...\n")
           Thread.sleep(20000)
-          if (diff<70000) checkBatchState(createdBatch, Calendar.getInstance.getTime.getTime-startTime.getTime)
+          if (diff < 70000) checkBatchState(createdBatch, Calendar.getInstance.getTime.getTime - startTime.getTime)
           else println("Waited for batch too long.")
           None
       }
     }
 
-    checkBatchState(createdBatch, Calendar.getInstance.getTime.getTime-startTime.getTime)
+    checkBatchState(createdBatch, Calendar.getInstance.getTime.getTime - startTime.getTime)
   }
-
 
   def getQueryResults(establishedConnection: BulkConnection, createdJob: JobInfo, createdBatch: Option[BatchInfo]): Option[List[String]] = {
     createdBatch match {
@@ -107,4 +106,5 @@ object SFQuery {
       case Failure(msg) => Failure(msg)
     }
   }
+
 }
