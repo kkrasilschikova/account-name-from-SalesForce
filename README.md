@@ -36,14 +36,14 @@ java -jar "C:\temp\AccountNameFromSalesForce.jar" "D:\cases.csv" "username@domai
 
 #### In order to run the program on Linux system
 
-0) prepared cases.csv was put, for example, in home/user/Downloads/
+0) prepared cases.csv was put, for example, in /home/user/Downloads/
 
-1) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to home/user/Downloads/
+1) download AccountNameFromSalesForce.jar file from https://github.com/kkrasilschikova/account-name-from-salesforce/blob/master/out/artifacts/AccountNameFromSalesForce_jar/AccountNameFromSalesForce.jar, for example, to /home/user/Downloads/
 
 2) open terminal window and specify path to .csv file, username and passwordSecurityToken (no spaces), for example,
 
 *[root@localhost]$*
-java -jar home/user/Downloads/AccountNameFromSalesForce.jar "home/user/Downloads/cases.csv" "username@domain.com" 'PasswordSecurityToken'
+java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Downloads/cases.csv "username@domain.com" 'PasswordSecurityToken'
 
 #### How to generate SalesForce security token
 
