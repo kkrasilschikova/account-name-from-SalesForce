@@ -60,3 +60,8 @@ java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Download
 3) click Personal -> Reset My Security Token, or enter 'reset' in quick find
 
 You'll receive an e-mail with a new token.
+
+####In order to test the program
+
+- run `sbt assembly`
+- start AccountNameFromSalesForce.jar pasing csv filename, username and password
