@@ -61,7 +61,7 @@ java -jar /home/user/Downloads/AccountNameFromSalesForce.jar /home/user/Download
 
 You'll receive an e-mail with a new token.
 
-####In order to test the program
+#### In order to test the program
 
 - run `sbt assembly`
-- start AccountNameFromSalesForce.jar pasing csv filename, username and password
+- start AccountNameFromSalesForce.jar passing csv filename, username and password
