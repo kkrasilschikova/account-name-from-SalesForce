@@ -1,6 +1,6 @@
 ## account-name-from-salesforce
 #### Purpose:
-You may get Account name from SalesForce by providing the program with .csv file that has Case number column.  
+You may get Account name from SalesForce and html link to Account by providing the program with .csv file that has Case number column.
 Please prepare .csv file in advance.  
 Output will be .html file in the folder where you run the program.
 
@@ -64,4 +64,4 @@ You'll receive an e-mail with a new token.
 #### In order to test the program
 
 - run `sbt assembly`
-- start AccountNameFromSalesForce.jar passing csv filename, username and password
+- start AccountNameFromSalesForce.jar passing csv filename, username and passwordSecurityToken
