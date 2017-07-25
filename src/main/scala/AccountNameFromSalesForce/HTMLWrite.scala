@@ -13,12 +13,16 @@ case object HTMLWrite {
 
   def writeToHTMLFile(lisOfAccounts: Option[List[String]], filename: Option[String]): Unit = {
     if (isListOfAccountsNotEmpty(lisOfAccounts)) {
-      val combinedList = lisOfAccounts.toList.flatten
+      val listWithURL=lisOfAccounts.toList.flatten.map { el => el.replace("\"", "")}
+        .map{ el => (el splitAt (el lastIndexOf ','))._1+" <a href=\"https://na62.salesforce.com/"+(el splitAt (el lastIndexOf ','))._2.drop(1)+"\">Link to SalesForce</a>"}
+
+      val combinedList = listWithURL.drop(1)
         .map {
-          el => s"<tr><td>${el.replace("\"", " ").mkString}</td></tr>"
+          el => s"<tr><td>$el</td></tr>"
         }
-        .mkString
-      val preparedOutput = s"<!DOCTYPE HTML><html><head><title>Case Number, Account Name</title></head><body><table>$combinedList</table></body></html>"
+        .mkString.replace(",", " ")
+
+      val preparedOutput = s"<!DOCTYPE HTML><html><head><title>Case Number, Account Name, Account.Id</title></head><body><table>$combinedList</table></body></html>"
 
       val dateFormat = new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH-mm-ss")
       val now = dateFormat.format(Calendar.getInstance.getTime)

@@ -39,7 +39,7 @@ object SFQuery {
       throw customException("SalesForce batch inconsistent, please change batch size and check source input data.")
 
     s"""
-    SELECT CaseNumber, Account.Name
+    SELECT CaseNumber, Account.Name, Account.ID
     FROM Case
     WHERE CaseNumber IN
     (${
